@@ -67,36 +67,48 @@ while (!salir)
                 c_total += cants_p[i];
             }
 
-            System.out.println("Configuracion del Descuento");
-            System.out.print("Tipo de cliente (1=Normal, 2=Estudiante, 3=Jubilado, 4=VIP): ");
-            nt t = sc.nextInt();
+            int t;
+            do {
+                System.out.print("Tipo de cliente (1=Normal, 2=Estudiante, 3=Jubilado, 4=VIP): ");
+                t = sc.nextInt();
+            } while (t < 1 || t > 4);
 
-            System.out.print("Es temporada de rebajas? (1: Sí / 2: No): ");
-            char r = sc.nextInt()==1?'s':'n';
-            
-            double pf = p_total;
+            int rebajasOpt;
+            do {
+                System.out.print("Es temporada de rebajas? (1: Si / 2: No): ");
+                rebajasOpt = sc.nextInt();
+            } while (rebajasOpt != 1 && rebajasOpt != 2);
 
-            if (t == 1) { // Normal
-                if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 5) { pf = pf - (pf * 0.05); }
-            } else if (t == 2) { // Estudiante
-                pf = pf - (pf * 0.15);
-                if (r == 's') { pf = pf - (pf * 0.10); }
-                if (c_total >= 3) { pf = pf - (pf * 0.08); }
-            } else if (t == 3) { // Jubilado
-                pf = pf - (pf * 0.20);
-                if (r == 's') { pf = pf - (pf * 0.15); }
-                if (c_total >= 2) { pf = pf - (pf * 0.10); }
-            } else if (t == 4) { // VIP
-                pf = pf - (pf * 0.30);
-                if (r == 's') { pf = pf - (pf * 0.20); }
-                if (c_total >= 1) { pf = pf - (pf * 0.15); }
+            boolean esRebajas = (rebajasOpt == 1);
+
+            double descuento = 0;
+
+            if (t == 1) {
+                if (esRebajas) descuento += 0.10;
+                if (c_total >= 5) descuento += 0.05;
+            } else if (t == 2) {
+                descuento += 0.15;
+                if (esRebajas) descuento += 0.10;
+                if (c_total >= 3) descuento += 0.08;
+            } else if (t == 3) {
+                descuento += 0.20;
+                if (esRebajas) descuento += 0.15;
+                if (c_total >= 2) descuento += 0.10;
+            } else if (t == 4) {
+                descuento += 0.30;
+                if (esRebajas) descuento += 0.20;
+                if (c_total >= 1) descuento += 0.15;
             }
+
+            double pf = p_total * (1 - descuento);
 
             if (pf > 500) {
-                pf = pf - 50;
+                pf -= 50;
             }
 
+            if (pf < 0) {
+                pf = 0;
+            }
             System.out.println("Resumen de Compra");
             System.out.println("Precio original total: " + p_total + " euros");
             System.out.println("Numero total de productos: " + c_total);
