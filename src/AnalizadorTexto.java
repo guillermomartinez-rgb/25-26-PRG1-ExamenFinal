@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class AnalizadorTexto {
+class AnalizadorTexto {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -45,17 +45,13 @@ public class AnalizadorTexto {
         System.out.println("Espacios: " + espacios);
         System.out.println("Otros: " + otros);
 
-        if (vocales > consonantes && consonantes > 0 && texto.length() > 20 &&
-            espacios >= 2 && numeros == 0) {
+        if (vocales > consonantes && consonantes > 0 && texto.length() > 20 && espacios >= 2 && numeros == 0) {
             System.out.println("Categoría: Texto literario con alta densidad vocálica");
-        } else if (consonantes > vocales && vocales > 0 && texto.length() > 15 &&
-                   (otros >= 3 || numeros >= 2) && espacios >= 1) {
+        } else if (consonantes > vocales && vocales > 0 && texto.length() > 15 && (otros >= 3 || numeros >= 2) && espacios >= 1) {
             System.out.println("Categoría: Texto técnico o científico");
-        } else if (numeros > 5 && (vocales + consonantes) < texto.length() / 2 &&
-                   espacios < texto.length() / 10 && otros >= 2) {
+        } else if (numeros > 5 && (vocales + consonantes) < texto.length() / 2 && espacios < texto.length() / 10 && otros >= 2) {
             System.out.println("Categoría: Código o expresión matemática");
-        } else if (espacios > texto.length() / 5 && vocales > 0 && consonantes > 0 &&
-                   numeros < 3 && otros < vocales / 2) {
+        } else if (espacios > texto.length() / 5 && vocales > 0 && consonantes > 0 && numeros < 3 && otros < vocales / 2) {
             System.out.println("Categoría: Texto informal o conversacional");
         } else {
             System.out.println("Categoría: Texto genérico");
@@ -88,9 +84,7 @@ public class AnalizadorTexto {
             }
         }
 
-        if (tieneMayuscula && tieneMinuscula && texto.charAt(0) >= 'A' && texto.charAt(0) <= 'Z' &&
-            (texto.charAt(texto.length() - 1) == '.' || texto.charAt(texto.length() - 1) == '!' ||
-             texto.charAt(texto.length() - 1) == '?') && espacios > 0) {
+        if (tieneMayuscula && tieneMinuscula && texto.charAt(0) >= 'A' && texto.charAt(0) <= 'Z' && (texto.charAt(texto.length() - 1) == '.' || texto.charAt(texto.length() - 1) == '!' || texto.charAt(texto.length() - 1) == '?') && espacios > 0) {
             System.out.println("Formato: Oración bien formada");
         } else if (tieneMayuscula && !tieneMinuscula && numeros >= 2 && espacios < texto.length() / 10) {
             System.out.println("Formato: Código o identificador");

@@ -25,7 +25,8 @@ public class MaquinaExpendedora {
             }
             
             System.out.println(); // Separador
-            System.out.println("Saldo actual: " + String.format("%.2f", saldo) + " euros (Max. " + max_saldo_maq + "eur)");
+            
+            System.out.println("Saldo actual: " + ((int) saldo * 100) / 100 + " euros (Max. " + max_saldo_maq + "eur)");
             System.out.print("[1] Insertar moneda (Validas: ");
             for(int i = 0; i < mon_val.length; i++) {
                 System.out.print(mon_val[i] + " ");
@@ -76,7 +77,7 @@ public class MaquinaExpendedora {
                 }
             } else if (opt == 3) {
                 if (saldo > 0) {
-                    System.out.println("No olvides recoger tu cambio: " + String.format("%.2f", saldo) + " euros.");
+                    System.out.println("No olvides recoger tu cambio: " + ((int) saldo * 100) / 100 + " euros.");
                 }
                 System.out.println("Gracias por tu visita. ¡Hasta pronto!");
                 break;

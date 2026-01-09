@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class GestorTareas {
+class GestorTareas {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String[] tareas = new String[10];
