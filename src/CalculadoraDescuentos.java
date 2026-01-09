@@ -6,9 +6,9 @@ public class CalculadoraDescuentos {
 
         System.out.println("Calculadora de Descuentos - Tienda Online");
 
-        boolean salir = false;
-        while (!salir)
-         {
+       boolean salir = false;
+while (!salir)
+ {
             System.out.println("[1] Realizar Nueva Compra");
             System.out.println("[2] Salir");
             System.out.print("Opcion: ");
@@ -31,27 +31,32 @@ public class CalculadoraDescuentos {
             int n_prods = 0;
 
             System.out.println("Carrito de Compra");
-            while(n_prods < 10) {
+            while (n_prods < 10) {
                 System.out.print("Nombre del producto (o 'fin' para terminar): ");
                 String nombre = sc.nextLine();
+
                 if (nombre.equalsIgnoreCase("fin")) {
                     break;
                 }
+
                 nombres_p[n_prods] = nombre;
-                
-                System.out.print("Precio de '" + nombre + "': ");
-                precios_p[n_prods] = sc.nextDouble();
-                
-                System.out.print("Cantidad de '" + nombre + "': ");
-                cants_p[n_prods] = sc.nextInt();
-                sc.nextLine(); 
 
+                double precio;
+                do {
+                    System.out.print("Precio de '" + nombre + "': ");
+                    precio = sc.nextDouble();
+                } while (precio <= 0);
+                precios_p[n_prods] = precio;
+
+                int cantidad;
+                do {
+                    System.out.print("Cantidad de '" + nombre + "': ");
+                    cantidad = sc.nextInt();
+                } while (cantidad <= 0);
+                cants_p[n_prods] = cantidad;
+
+                sc.nextLine();
                 n_prods++;
-            }
-
-            if(n_prods == 0){
-                System.out.println("Carrito vacio, no se puede calcular el descuento.");
-                continue;
             }
 
             // Calcular total del carrito
