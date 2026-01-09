@@ -69,7 +69,7 @@ while (!salir)
 
             System.out.println("Configuracion del Descuento");
             System.out.print("Tipo de cliente (1=Normal, 2=Estudiante, 3=Jubilado, 4=VIP): ");
-            int t = sc.nextInt();
+            nt t = sc.nextInt();
 
             System.out.print("Es temporada de rebajas? (1: Sí / 2: No): ");
             char r = sc.nextInt()==1?'s':'n';
