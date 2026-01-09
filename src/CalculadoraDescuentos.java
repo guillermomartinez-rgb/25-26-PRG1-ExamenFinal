@@ -6,7 +6,9 @@ public class CalculadoraDescuentos {
 
         System.out.println("Calculadora de Descuentos - Tienda Online");
 
-        while (true) {
+        boolean salir = false;
+        while (!salir)
+         {
             System.out.println("[1] Realizar Nueva Compra");
             System.out.println("[2] Salir");
             System.out.print("Opcion: ");
